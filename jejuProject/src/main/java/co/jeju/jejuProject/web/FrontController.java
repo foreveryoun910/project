@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.jeju.jejuProject.command.Home;
 import co.jeju.jejuProject.common.Command;
+import co.jeju.jejuProject.member.command.MemberList;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +24,7 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
+		map.put("/memberList.do", new MemberList());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

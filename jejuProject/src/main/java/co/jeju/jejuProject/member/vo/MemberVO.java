@@ -5,8 +5,8 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String name;
+	private String nickname;
 	private String email;
-	private String phone;
 	private String author;
 	private String state;
 	
@@ -56,14 +56,6 @@ public class MemberVO {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getAuthor() {
 		return author;
 	}
@@ -78,6 +70,14 @@ public class MemberVO {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 }

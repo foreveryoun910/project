@@ -11,14 +11,14 @@
 <body>
 	<table border="1">
 		<tr>
-			<td colspan="2"><tiles:insertAttribute name="header" /></td>
+			<td colspan="2"><tiles:insertAttribute name="header" ignore="true" /></td>
 		</tr>
 		<tr>
-			<td><tiles:insertAttribute name="menu" /></td>
-			<td><tiles:insertAttribute name="body" /></td>
+			<td><tiles:insertAttribute name="menu" ignore="true" /></td>
+			<td><tiles:insertAttribute name="body" ignore="true" /></td>
 		</tr>
 		<tr>
-			<td colspan="2"><tiles:insertAttribute name="footer" /></td>
+			<td colspan="2"><tiles:insertAttribute name="footer" ignore="true" /></td>
 		</tr>
 	</table>
 </body>
