@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.jeju.jejuProject.board.command.BoardInsert;
+import co.jeju.jejuProject.board.command.BoardInsertForm;
+import co.jeju.jejuProject.board.command.BoardList;
+import co.jeju.jejuProject.board.command.BoardSelect;
 import co.jeju.jejuProject.command.Home;
 import co.jeju.jejuProject.common.Command;
 import co.jeju.jejuProject.member.command.Login;
@@ -44,6 +48,14 @@ public class FrontController extends HttpServlet {
 		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 회원정보변경 폼
 		map.put("/memberUpdate.do", new MemberUpdate()); // 회원정보변경
 		map.put("/memberDelete.do", new MemberDelete()); // 회원탈퇴
+		// board
+		map.put("/boardList.do", new BoardList()); // 전체공지조회
+		map.put("/boardSelect.do", new BoardSelect()); // 게시글상세조회
+		map.put("/boardInsertForm.do", new BoardInsertForm()); // 게시글 작성 폼
+		map.put("/boardInsert.do", new BoardInsert()); // 게시글 작성
+//		map.put("/boardUpdateForm.do", new BoardUpdateForm()); // 게시글 수정 폼
+//		map.put("/boardUpdate.do", new BoardUpdate()); // 게시글 수정
+//		map.put("/boardDelete.do", new BoardDelete()); // 게시글 삭제		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
