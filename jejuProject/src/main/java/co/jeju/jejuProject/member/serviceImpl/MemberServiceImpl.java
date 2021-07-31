@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO memberSelect(MemberVO vo) {
 		// TODO 회원조회(회원-내정보보기)
-		String sql = "select * from member where id = ?";
+		String sql = "select * from member where id = ? and state = 'Y'";
 		conn = dataSource.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);

@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.jeju.jejuProject.command.Home;
 import co.jeju.jejuProject.common.Command;
+import co.jeju.jejuProject.member.command.Login;
+import co.jeju.jejuProject.member.command.LoginForm;
 import co.jeju.jejuProject.member.command.MemberList;
+import co.jeju.jejuProject.member.command.MemberSelect;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +27,10 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
-		map.put("/memberList.do", new MemberList());
+		map.put("/memberList.do", new MemberList()); // 전체회원조회
+		map.put("/memberSelect.do", new MemberSelect()); // 회원정보조회
+		map.put("/loginForm.do", new LoginForm()); // 로그인 폼
+		map.put("/login.do", new Login()); // 로그인
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
