@@ -33,8 +33,8 @@
 		</div><br>
 		<div>
 			<button type="button" onclick="location.href='boardList.do'">목록</button>&nbsp;&nbsp;&nbsp;
-			<button type="submit" onclick="location.href='updateForm.do?bId=${board.bNo}'">수정</button>&nbsp;&nbsp;&nbsp;
-			<button type="submit" onclick="location.href='deleteBoard.do?bId=${board.bNo}'">삭제</button>
+			<button type="submit" onclick="location.href='boardUpdateForm.do?bNo=${board.bNo}'">수정</button>&nbsp;&nbsp;&nbsp;
+			<button type="submit" onclick="location.href='boardDelete.do?bNo=${board.bNo}'">삭제</button>
 		</div>
 	</div>
 </body>
