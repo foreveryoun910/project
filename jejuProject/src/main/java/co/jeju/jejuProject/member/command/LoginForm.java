@@ -10,7 +10,7 @@ public class LoginForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 로그인 폼
-		return "member/loginForm.jsp";
+		return "/WEB-INF/views/member/loginForm.jsp";
 	}
 
 }
