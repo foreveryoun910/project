@@ -15,6 +15,8 @@ import co.jeju.jejuProject.common.Command;
 import co.jeju.jejuProject.member.command.Login;
 import co.jeju.jejuProject.member.command.LoginForm;
 import co.jeju.jejuProject.member.command.Logout;
+import co.jeju.jejuProject.member.command.MemberInsert;
+import co.jeju.jejuProject.member.command.MemberInsertForm;
 import co.jeju.jejuProject.member.command.MemberList;
 import co.jeju.jejuProject.member.command.MemberSelect;
 
@@ -28,11 +30,14 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/home.do", new Home());
+		// member
 		map.put("/memberList.do", new MemberList()); // 전체회원조회
 		map.put("/memberSelect.do", new MemberSelect()); // 회원정보조회
 		map.put("/loginForm.do", new LoginForm()); // 로그인 폼
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/logout.do", new Logout()); // 로그아웃
+		map.put("/memberInsertForm.do", new MemberInsertForm()); // 회원가입 폼
+		map.put("/memberInsert.do", new MemberInsert()); // 회원가입
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -9,6 +9,9 @@
 <body>
 	<div align="center">
 		${message}
+		<div>
+			<button type="button" onclick="location.href='home.do'">홈으로</button>
+		</div>
 	</div>
 </body>
 </html>

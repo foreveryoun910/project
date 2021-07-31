@@ -9,34 +9,30 @@ import co.jeju.jejuProject.member.service.MemberService;
 import co.jeju.jejuProject.member.serviceImpl.MemberServiceImpl;
 import co.jeju.jejuProject.member.vo.MemberVO;
 
-public class Login implements Command {
+public class MemberInsert implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 로그인
+		// TODO 회원가입
 		MemberService dao = new MemberServiceImpl();
 		MemberVO vo = new MemberVO();
-		HttpSession session = request.getSession();
 		vo.setId(request.getParameter("id"));
 		vo.setPassword(request.getParameter("password"));
-		vo = dao.memberLogin(vo);
-		
-		String page = "";
-		if(vo.getNickname() != null) {
-			session.setAttribute("nickname", vo.getNickname());
-			session.setAttribute("author", vo.getAuthor());
-			session.setAttribute("id", vo.getId());
-			request.setAttribute("message", session.getAttribute("nickname") + "님 로그인 성공");
-			page = "home/home";
-			
+		vo.setName(request.getParameter("name"));
+		vo.setNickname(request.getParameter("nickname"));
+		vo.setEmail(request.getParameter("email"));
+		int n = dao.memberInsert(vo);
+
+		String view;
+		if(n != 0) {
+			request.setAttribute("message", vo.getId() + "님 회원가입을 축하합니다.");
+			view = "home/home";
 		} else {
-			String message = "로그인 실패 메세지";
-			request.setAttribute("message", message);
-			
-			page = "member/memberMessage";
+			request.setAttribute("message", "입력 실패!");
+			view = "member/memberMessage";
 		}
 		
-		return page;
+		return view;
 	}
 
 }

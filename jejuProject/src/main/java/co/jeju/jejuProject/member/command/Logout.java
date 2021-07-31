@@ -17,7 +17,7 @@ public class Logout implements Command {
 		session.removeAttribute("author");
 		request.setAttribute("message", message);
 		
-		return "member/memberError";
+		return "member/memberMessage";
 	}
 
 }

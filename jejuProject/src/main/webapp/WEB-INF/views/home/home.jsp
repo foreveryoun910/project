@@ -7,10 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${nickname} 님 로그인 성공!
+	${message}
 	
-	<form id="frm" name="frm" action="logout.do" method="post">
-		<input type="submit" value="로그아웃">
-	</form>
+	<div>
+		<button type="button" onclick="location.href='logout.do'">로그아웃</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" onclick="location.href='loginForm.do'">로그인</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" onclick="location.href='memberInsertForm.do'">회원가입</button>
+	</div>
+	
+	<div align="center">
+		<div>
+			우왕아ㅏㅇ아아<br>
+			공간<br>
+			확보<br>
+			공간<br>
+			확보<br>
+		</div>
+	</div>
 </body>
 </html>
