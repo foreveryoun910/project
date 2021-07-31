@@ -6,6 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<script type="text/javascript">
+		function submit2(frm) {
+			frm.action = 'memberDelete.do';
+			frm.submit();
+			return true;
+		}
+	</script>		
 </head>
 <body>
 	<div align="center">
@@ -37,7 +44,7 @@
 				<div>
 					<button type="submit">회원정보변경</button>
 					&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="location.href='memberDelete.do'">회원추방</button>
+					<input type='button' value='회원탈퇴' onclick='return submit2(this.form);'>
 				</div>
 			</form>
 		</div>

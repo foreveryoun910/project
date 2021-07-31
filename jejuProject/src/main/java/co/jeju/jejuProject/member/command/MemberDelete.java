@@ -9,29 +9,30 @@ import co.jeju.jejuProject.member.service.MemberService;
 import co.jeju.jejuProject.member.serviceImpl.MemberServiceImpl;
 import co.jeju.jejuProject.member.vo.MemberVO;
 
-public class MemberInsert implements Command {
+public class MemberDelete implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 회원가입
+		// TODO 회원탈퇴
 		MemberService dao = new MemberServiceImpl();
+		HttpSession session = request.getSession();
 		MemberVO vo = new MemberVO();
 		vo.setId(request.getParameter("id"));
 		vo.setPassword(request.getParameter("password"));
-		vo.setName(request.getParameter("name"));
+		vo.setName(vo.getName());
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setEmail(request.getParameter("email"));
-		int n = dao.memberInsert(vo);
-
-		String page;
+		vo.setAuthor(request.getParameter("author"));
+		vo.setState(request.getParameter("state"));
+		int n = dao.memberDelete(vo);
+		session.invalidate();
+		
+		String page = "";
 		if(n != 0) {
-			request.setAttribute("message", vo.getId() + "님 회원가입을 축하합니다.");
 			page = "home/home";
 		} else {
-			request.setAttribute("message", "입력 실패!");
 			page = "member/memberMessage";
 		}
-		
 		return page;
 	}
 

@@ -40,6 +40,9 @@
 				</c:forEach>
 			</table>
 		</div><br>
+		<div>
+			<button type="button" onclick="location.href='home.do'">홈으로</button>
+		</div>
 	</div>
 	<div>
 		<form id="frm" name="frm" action="memberSelect.do" method="post">
