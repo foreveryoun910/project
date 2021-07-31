@@ -19,6 +19,8 @@ import co.jeju.jejuProject.member.command.MemberInsert;
 import co.jeju.jejuProject.member.command.MemberInsertForm;
 import co.jeju.jejuProject.member.command.MemberList;
 import co.jeju.jejuProject.member.command.MemberSelect;
+import co.jeju.jejuProject.member.command.MemberUpdate;
+import co.jeju.jejuProject.member.command.MemberUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,6 +40,8 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout()); // 로그아웃
 		map.put("/memberInsertForm.do", new MemberInsertForm()); // 회원가입 폼
 		map.put("/memberInsert.do", new MemberInsert()); // 회원가입
+		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 회원정보변경 폼
+		map.put("/memberUpdate.do", new MemberUpdate()); // 회원정보변경
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
