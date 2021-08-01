@@ -12,6 +12,73 @@
 			frm.submit();
 		}
 	</script>
+	
+	<style>
+		/*	Login Modal Start
+		    ==================================================*/
+		
+		
+		#create-account_form, #login_frm {
+			float: center;
+			text-align: center;
+			width: 90%;
+		}
+		#create-account_form {
+			margin-right: 11px;
+			margin-top: 0;
+			min-height: 245px;
+		}
+		#create-account_form h3,
+		#login_frm h3 {
+			background: none repeat scroll 0 0 #90c322;
+			color: #FFFFFF;
+			padding:8px 0;
+			font-size: 24px;
+		}
+		#authentication #create-account_form .form_content,
+		#authentication #login_frm .form_content {
+			min-height: 185px;
+			padding: 15px 10px;
+		}
+		#create-account_form h4 {
+			font-size: 18px;
+			font-weight: normal;
+			margin: 0 10px;
+			padding-bottom: 22px;
+			text-align: left;
+		}
+		#create-account_form #email_create,
+		#login_frm #email,
+		#login_frm #passwd,
+		#login_frm #login_email,
+		#login_frm #login_passwd {
+			height: auto;
+			padding: 5px;
+			width: 220px;
+			border: 1px solid #dedede;
+		}
+		
+		
+		#create-account_form .text label {
+			display: none;
+		}
+		#create-account_form h3,
+		#authentication #login_frm h3 {
+			background: none repeat scroll 0 0 #212224;
+			color: #FFFFFF;
+		}
+		#authentication #create-account_form .form_content,
+		#authentication #login_frm .form_content {
+			background: none repeat scroll 0 0 #F0F0F0 !important;
+		}
+		.text label {
+			display: none;
+		}
+		#login_frm > fieldset ,
+		#create-account_form > fieldset {
+			background: #f5f5f5;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,6 +91,7 @@
 					THIS NUMBER: <strong>053-421-2460</strong>
 				</p>
 			</div>
+			
 			<div class="col-lg-3 clearfix">
 				<ul class="login-cart">
 				<c:if test = "${ empty nickname }">
@@ -39,6 +107,7 @@
 				</c:if>	
 				</ul>
 			</div>
+			
 			<div class="col-lg-2">
 				<div class="search-box">
 					<div class="input-group">
@@ -69,32 +138,33 @@
 					<h4 class="modal-title" id="myModalLabel">LOG-IN</h4>
 				</div>
 				
-				<div class="modal-body clearfix">
-					<form action="" method="post" id="login_form" class="std">
+				
+				<div align="center" class="modal-body clearfix">
+					<form id="login_frm" action="login.do" method="post" class="std">
 						<fieldset>
 							<h3>Already registered?</h3>
 							<div class="form_content clearfix">
 								<p class="text">
-									<label for="email">E-mail address</label> <span><input
-										placeholder="E-mail address" type="text" id="email"
-										name="email" value="" class="account_input"></span>
+									<label for="id">ID</label>
+									<span><input type="text" id="id" name="id" size="30" value="" class="account_input" placeholder="Enter your ID"></span>
 								</p>
 								<p class="text">
-									<label for="passwd">Password</label> <span><input
-										placeholder="Password" type="password" id="passwd"
-										name="passwd" value="" class="account_input"></span>
+									<label for="password">Password</label>
+									<span><input type="password" id="password" name="password" size="30" value="" class="account_input" placeholder="Enter your Password"></span>
 								</p>
 								<p class="lost_password">
-									<a href="#popab-password-reset" class="popab-password-link">Forgot
-										your password?</a>
+									<a href="#popab-password-reset" class="popab-password-link">Forgot your password?</a>
 								</p>
 								<p class="submit">
-									<button class="btn btn-success">Log in</button>
+									<button class="btn btn-success">Login</button>
 								</p>
 							</div>
 						</fieldset>
 					</form>
 				</div>
+				
+				
+				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
@@ -149,25 +219,17 @@
 				<li><a href="boardList.do">NOTICE</a></li>
 				<li><a href="reviewList.do">TRAVEL REVIEW</a></li>
 				<li><a href="infoList.do">INFORMATION BOARD</a></li>
+				<c:if test = "${ not empty nickname }">
+				
 				<li class="dropdown"><a href="#"> MY PAGE <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="#" onclick="getRecord('${id}')">My Page</a></li>
-						<li><a href="#">Member Management</a></li>
-					</ul></li>
-				<!-- End of /.dropdown -->
-
-<!-- 				<c:if test = "${ not empty nickname }">
-				<li class="dropdown"><a href="#"> MY PAGE <span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">My Page</a></li>
 						<c:if test = "${ author eq 'ADMIN' }">
-							<li><a href="#">My Page</a></li>
-							<li><a href="#">Member Management</a></li>
+							<li><a href="memberList.do">Member Management</a></li>
 						</c:if>	
 					</ul></li>
-				</c:if> -->
+				</c:if>
 
 			</ul>
 			<!-- End of /.nav-main -->
