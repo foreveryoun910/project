@@ -7,32 +7,9 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="block clearfix">
-					<a href="#"> <img
-						src="<%=request.getContextPath()%>/resource/images/footer-logo.png"
-						alt="">
+					<a href="#"> 
 					</a>
-					<p>Lorem Ipsum is simply dummy text of the printing and
-						typesetting industry. Lorem Ipsum has been the industry's standard
-						dummy text ever since the 1500s</p>
-					<h4 class="connect-heading">CONNECT WITH US</h4>
-					<ul class="social-icon">
-						<li><a class="facebook-icon" href="#"> <i
-								class="fa fa-facebook"></i>
-						</a></li>
-						<li><a class="plus-icon" href="#"> <i
-								class="fa fa-google-plus"></i>
-						</a></li>
-						<li><a class="twitter-icon" href="#"> <i
-								class="fa fa-twitter"></i>
-						</a></li>
-						<li><a class="pinterest-icon" href="#"> <i
-								class="fa fa-pinterest"></i>
-						</a></li>
-						<li><a class="linkedin-icon" href="#"> <i
-								class="fa fa-linkedin"></i>
-						</a></li>
-					</ul>
-					<!-- End Of /.social-icon -->
+					<h1>Have a nice trip!</h1>
 				</div>
 				<!-- End Of /.block -->
 			</div>
@@ -41,20 +18,16 @@
 				<div class="block">
 					<h4>GET IN TOUCH</h4>
 					<p>
-						<i class="fa  fa-map-marker"></i> <span>Food Code d.o.o.,</span>1000
-						Ljubljana Celovska cesta 135, Slovenia
-					</p>
-					<p>
-						<i class="fa  fa-phone"></i> <span>Phone:</span> (+386) 40 123 456
+						<i class="fa  fa-map-marker"></i> <span>address</span>5th floor, 537 Gukchaebosang-ro, Jung-gu, Daegu (Sangseo-dong)
 					</p>
 
 					<p>
-						<i class="fa  fa-mobile"></i> <span>Mobile:</span> (+386) 40 654
-						123 651
+						<i class="fa  fa-mobile"></i> <span>Mobile:</span> 	053-421-2460
+				
 					</p>
 
 					<p class="mail">
-						<i class="fa  fa-envelope"></i>Eamil: <span>info@sitename.com</span>
+						<i class="fa  fa-envelope"></i>Eamil: <span>jiyoung.kang@daeguoracle.com</span>
 					</p>
 				</div>
 				<!-- End Of /.block -->
@@ -96,7 +69,7 @@
 						</a></li>
 					</ul>
 					<p class="copyright-text pull-right">
-						Food Code @2013 Designed by <a href="http://www.themexpert.com">Themexpert</a>
+						jeju Code @2021 Designed by <a href="http://www.themexpert.com">Themexpert</a>
 						All Rights Reserved
 					</p>
 				</div>

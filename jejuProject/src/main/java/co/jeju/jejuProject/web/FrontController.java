@@ -29,6 +29,13 @@ import co.jeju.jejuProject.member.command.MemberList;
 import co.jeju.jejuProject.member.command.MemberSelect;
 import co.jeju.jejuProject.member.command.MemberUpdate;
 import co.jeju.jejuProject.member.command.MemberUpdateForm;
+import co.jeju.jejuProject.review.command.ReviewDelete;
+import co.jeju.jejuProject.review.command.ReviewInsert;
+import co.jeju.jejuProject.review.command.ReviewInsertForm;
+import co.jeju.jejuProject.review.command.ReviewList;
+import co.jeju.jejuProject.review.command.ReviewSelect;
+import co.jeju.jejuProject.review.command.ReviewUpdate;
+import co.jeju.jejuProject.review.command.ReviewUpdateForm;
 
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -58,7 +65,17 @@ public class FrontController extends HttpServlet {
 		map.put("/boardInsert.do", new BoardInsert()); // 공지 작성
 		map.put("/boardUpdateForm.do", new BoardUpdateForm()); // 공지 수정 폼
 		map.put("/boardUpdate.do", new BoardUpdate()); // 공지 수정
-		map.put("/boardDelete.do", new BoardDelete()); // 공지 삭제		
+		map.put("/boardDelete.do", new BoardDelete()); // 공지 삭제
+		// review
+		map.put("/reviewList.do", new ReviewList()); // 후기게시판 글목록
+		map.put("/reviewSelect.do", new ReviewSelect()); // 글조회
+		map.put("/reviewInsertForm.do", new ReviewInsertForm()); // 글작성 폼
+		map.put("/reviewInsert.do", new ReviewInsert()); // 글작성
+		map.put("/reviewUpdateForm.do", new ReviewUpdateForm()); // 글수정 폼
+		map.put("/reviewUpdate.do", new ReviewUpdate()); // 글수정
+		map.put("/reviewDelete.do", new ReviewDelete()); // 글삭제
+		// info
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

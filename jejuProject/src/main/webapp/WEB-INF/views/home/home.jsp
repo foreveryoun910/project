@@ -3,15 +3,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function getRecord(n) {
+			frm.id.value = n;
+			frm.submit();
+		}
+	</script>
 </head>
 <body>
 
 
 	<!-- SLIDER Start
     ================================================== -->
-
+	<div align="center">
+		<div>	<!-- 메뉴부분 -->
+		${message}
+		    <ul>
+		      <c:if test = "${ empty nickname }">
+		          <button type="button" onclick="location.href='loginForm.do'">로그인</button>&nbsp;&nbsp;&nbsp;
+		          <button type="button" onclick="location.href='memberInsertForm.do'">회원가입</button>
+		      </c:if>
+		      <c:if test = "${ not empty nickname }">
+		      	  <button type="button" onclick="location.href='logout.do'">로그아웃</button>&nbsp;&nbsp;&nbsp;
+		      	  <button type="button" onclick="getRecord('${id}')">내정보</button>
+			      <li><a href="#contact">Contact</a></li>
+			      <li><a href="#about">About</a></li>
+			      <c:if test = "${ author eq 'ADMIN' }"> <!-- 관리자로 로그인했을 때만 보여주기 -->
+				      <li><a href="#about">Members</a></li>
+				      <button type="button" onclick="location.href='memberList.do'">전체회원조회</button> 
+			      </c:if>
+		      </c:if>
+		    </ul>
+		</div>
+		<div>
+			<button type="button" onclick="location.href='boardList.do'">공지사항게시판</button>
+			<button type="button" onclick="location.href='reviewList.do'">여행후기게시판</button>
+		</div>		
+		<div>
+		<form id="frm" name="frm" action="memberSelect.do" method="post">
+			<input type="hidden" id="id" name="id">
+		</form>
+	</div>
+	</div>
 
 	<section id="slider-area">
 		<div class="container">
@@ -19,11 +54,9 @@
 				<div class="col-md-12">
 					<div id="slider" class="nivoSlider">
 						<img
-							src="<%=request.getContextPath()%>/resource/images/slider.jpg"
+							src="<%=request.getContextPath()%>/resource/images/01.jpg"
 							alt="" /> <img
-							src="<%=request.getContextPath()%>/resource/images/slider1.jpg"
-							alt="" /> <img
-							src="<%=request.getContextPath()%>/resource/images/slider2.jpg"
+							src="<%=request.getContextPath()%>/resource/images/03.jpg"
 							alt="" />
 					</div>
 					<!-- End of /.nivoslider -->
@@ -33,162 +66,7 @@
 			<!-- End of /.row -->
 		</div>
 		<!-- End of /.container -->
-	</section>
+	</section><br><br>
 	<!-- End of Section -->
-
-
-
-	<!-- FEATURES Start
-    ================================================== -->
-
-	<section id="features">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="block">
-						<div class="media">
-							<div class="pull-left" href="#">
-								<i class="fa fa-ambulance"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Free Shipping</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="block">
-						<div class="media">
-							<div class="pull-left" href="#">
-								<i class=" fa fa-foursquare"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Media heading</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="block">
-						<div class="media">
-							<div class="pull-left" href="#">
-								<i class=" fa fa-phone"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Call Us</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur.</p>
-							</div>
-							<!-- End of /.media-body -->
-						</div>
-						<!-- End of /.media -->
-					</div>
-					<!-- End of /.block -->
-				</div>
-				<!-- End of /.col-md-4 -->
-			</div>
-			<!-- End of /.row -->
-		</div>
-		<!-- End of /.container -->
-	</section>
-	<!-- End of section -->
-
-
-
-	<!-- CATAGORIE Start
-    ================================================== -->
-
-	<section id="catagorie">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="block">
-						<div class="block-heading">
-							<h2>OUR FOOD CATEGORIES</h2>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 col-md-4">
-								<div class="thumbnail">
-									<a class="catagotie-head" href="blog-single.html"> <img
-										src="<%=request.getContextPath()%>/resource/images/category-image-1.jpg"
-										alt="...">
-										<h3>Beef Steak</h3>
-									</a>
-									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit. Iste, aut, esse, laborum placeat id illo a expedita
-											aperiam...</p>
-										<p>
-											<a href="blog-single.html"
-												class="btn btn-default btn-transparent" role="button"> <span>Check
-													Items</span>
-											</a>
-										</p>
-									</div>
-									<!-- End of /.caption -->
-								</div>
-								<!-- End of /.thumbnail -->
-							</div>
-							<!-- End of /.col-sm-6 col-md-4 -->
-							<div class="col-sm-6 col-md-4">
-								<div class="thumbnail">
-									<a class="catagotie-head" href="blog-single.html"> <img
-										src="<%=request.getContextPath()%>/resource/images/category-image-2.jpg"
-										alt="...">
-										<h3>Miscellaneous</h3>
-									</a>
-									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit. Iste, aut, esse, laborum placeat id illo a expedita
-											aperiam...</p>
-										<p>
-											<a href="blog-single.html"
-												class="btn btn-default btn-transparent" role="button"> <span>Check
-													Items</span>
-											</a>
-										</p>
-									</div>
-									<!-- End of /.caption -->
-								</div>
-								<!-- End of /.thumbnail -->
-							</div>
-							<!-- End of /.col-sm-6 col-md-4 -->
-							<div class="col-sm-6 col-md-4">
-								<div class="thumbnail">
-									<a class="catagotie-head" href="blog-single.html"> <img
-										src="<%=request.getContextPath()%>/resource/images/category-image-3.jpg"
-										alt="...">
-										<h3>Elegant Apparel</h3>
-									</a>
-									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit. Iste, aut, esse, laborum placeat id illo a expedita
-											aperiam...</p>
-										<p>
-											<a href="blog-single.html"
-												class="btn btn-default btn-transparent" role="button"> <span>Check
-													Items</span>
-											</a>
-										</p>
-									</div>
-									<!-- End of /.caption -->
-								</div>
-								<!-- End of /.thumbnail -->
-							</div>
-							<!-- End of /.col-sm-6 col-md-4 -->
-						</div>
-						<!-- End of /.row -->
-					</div>
-					<!-- End of /.block -->
-				</div>
-				<!-- End of /.col-md-12 -->
-			</div>
-			<!-- End of /.row -->
-		</div>
-		<!-- End of /.container -->
-	</section>
-	<!-- End of Section -->
-
 </body>
 </html>

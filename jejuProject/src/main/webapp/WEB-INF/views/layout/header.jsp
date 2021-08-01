@@ -7,7 +7,7 @@
 			<div class="col-md-7">
 				<p class="contact-action">
 					<i class="fa fa-phone-square"></i>IN CASE OF ANY QUESTIONS, CALL
-					THIS NUMBER: <strong>+565 975 658</strong>
+					THIS NUMBER: <strong>053-421-2460</strong>
 				</p>
 			</div>
 			<div class="col-md-3 clearfix">
@@ -18,7 +18,7 @@
 					<li>
 						<div class="cart dropdown">
 							<a data-toggle="dropdown" href="#"><i
-								class="fa fa-shopping-cart"></i>Cart(1)</a>
+								class="fa fa-shopping-cart"></i>Sign Up</a>
 							<div class="dropdown-menu dropup">
 								<span class="caret"></span>
 								<ul class="media-list">
@@ -130,9 +130,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<a href="#"> <img
-					src="<%=request.getContextPath()%>/resource/images/logo.png"
-					alt="logo">
+				<a href="#"> <H1>HELLO WELCOME TO JEJU</H1>
 				</a>
 			</div>
 			<!-- End of /.col-md-12 -->
@@ -165,10 +163,10 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav nav-main">
 				<li class="active"><a href="#">HOME</a></li>
-				<li><a href="products.html">SHOP</a></li>
-				<li><a href="blog.html">BLOG</a></li>
-				<li><a href="blog-single.html">ARTICLE</a></li>
-				<li class="dropdown"><a href="#"> PAGES <span class="caret"></span>
+				<li><a href="products.html">Notice</a></li>
+				<li><a href="blog.html">Travel review</a></li>
+				<li><a href="blog-single.html">information board</a></li>
+				<li class="dropdown"><a href="#"> my page <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Action</a></li>
