@@ -4,15 +4,12 @@ import java.sql.Date;
 
 public class InfoVO {
 	private int iNo;
-	private String iSubject; // 말머리
+	private String iSubject;
 	private String iTitle;
 	private String iContent;
 	private String iWriter;
 	private Date iDate;
 	private int iHit;
-	private int iLike;
-	private int iRecommend;
-	private int iAno;
 	
 	
 	public InfoVO() {
@@ -74,30 +71,6 @@ public class InfoVO {
 
 	public void setiHit(int iHit) {
 		this.iHit = iHit;
-	}
-
-	public int getiLike() {
-		return iLike;
-	}
-
-	public void setiLike(int iLike) {
-		this.iLike = iLike;
-	}
-
-	public int getiRecommend() {
-		return iRecommend;
-	}
-
-	public void setiRecommend(int iRecommend) {
-		this.iRecommend = iRecommend;
-	}
-
-	public int getiAno() {
-		return iAno;
-	}
-
-	public void setiAno(int iAno) {
-		this.iAno = iAno;
 	}
 	
 }

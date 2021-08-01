@@ -2,16 +2,13 @@ package co.jeju.jejuProject.review.vo;
 
 import java.sql.Date;
 
-public class ReviewVO extends CommentsVO {
+public class ReviewVO {
 	private int rNo;
 	private String rTitle;
 	private String rContent;
 	private String rWriter;
 	private Date rDate;
 	private int rHit;
-	private int rLike;
-	private int rRecommend;
-	private int rAno;
 	
 	
 	public ReviewVO() {
@@ -65,30 +62,6 @@ public class ReviewVO extends CommentsVO {
 
 	public void setrHit(int rHit) {
 		this.rHit = rHit;
-	}
-
-	public int getrLike() {
-		return rLike;
-	}
-
-	public void setrLike(int rLike) {
-		this.rLike = rLike;
-	}
-
-	public int getrRecommend() {
-		return rRecommend;
-	}
-
-	public void setrRecommend(int rRecommend) {
-		this.rRecommend = rRecommend;
-	}
-
-	public int getrAno() {
-		return rAno;
-	}
-
-	public void setrAno(int rAno) {
-		this.rAno = rAno;
 	}
 	
 }
