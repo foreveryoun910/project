@@ -106,7 +106,7 @@ public class InfoServiceImpl implements InfoService {
 	@Override
 	public int infoUpdate(InfoVO vo) {
 		// TODO 글수정
-		String sql = "update info set isubject = , ititle = ?, icontent = ? where ino = ?";
+		String sql = "update info set isubject = ?, ititle = ?, icontent = ? where ino = ?";
 		int n = 0;
 		conn = dataSource.getConnection();
 		try {

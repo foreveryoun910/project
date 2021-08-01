@@ -36,10 +36,6 @@
 			      </c:if>
 		      </c:if>
 		    </ul>
-		</div>
-		<div>
-			<button type="button" onclick="location.href='boardList.do'">공지사항게시판</button>
-			<button type="button" onclick="location.href='reviewList.do'">여행후기게시판</button>
 		</div>		
 		<div>
 		<form id="frm" name="frm" action="memberSelect.do" method="post">

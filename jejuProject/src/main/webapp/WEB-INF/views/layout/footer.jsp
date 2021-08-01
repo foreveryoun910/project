@@ -5,7 +5,7 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-lg-6">
 				<div class="block clearfix">
 					<a href="#"> 
 					</a>
@@ -14,20 +14,18 @@
 				<!-- End Of /.block -->
 			</div>
 			<!-- End Of /.Col-md-4 -->
-			<div class="col-md-4">
+			<div class="col-lg-6">
 				<div class="block">
 					<h4>GET IN TOUCH</h4>
 					<p>
-						<i class="fa  fa-map-marker"></i> <span>address</span>5th floor, 537 Gukchaebosang-ro, Jung-gu, Daegu (Sangseo-dong)
+						<span>Address:</span>&nbsp;&nbsp;5th floor, 537 Gukchaebosang-ro, Jung-gu, Daegu (Sangseo-dong)
 					</p>
-
 					<p>
-						<i class="fa  fa-mobile"></i> <span>Mobile:</span> 	053-421-2460
+						<span>Mobile:</span>&nbsp;&nbsp;053-421-2460
 				
 					</p>
-
 					<p class="mail">
-						<i class="fa  fa-envelope"></i>Eamil: <span>jiyoung.kang@daeguoracle.com</span>
+						<span>Email:</span>&nbsp;&nbsp;jiyoung.kang@daeguoracle.com
 					</p>
 				</div>
 				<!-- End Of /.block -->

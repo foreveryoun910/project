@@ -19,6 +19,13 @@ import co.jeju.jejuProject.board.command.BoardUpdate;
 import co.jeju.jejuProject.board.command.BoardUpdateForm;
 import co.jeju.jejuProject.command.Home;
 import co.jeju.jejuProject.common.Command;
+import co.jeju.jejuProject.info.command.InfoDelete;
+import co.jeju.jejuProject.info.command.InfoInsert;
+import co.jeju.jejuProject.info.command.InfoInsertForm;
+import co.jeju.jejuProject.info.command.InfoList;
+import co.jeju.jejuProject.info.command.InfoSelect;
+import co.jeju.jejuProject.info.command.InfoUpdate;
+import co.jeju.jejuProject.info.command.InfoUpdateForm;
 import co.jeju.jejuProject.member.command.Login;
 import co.jeju.jejuProject.member.command.LoginForm;
 import co.jeju.jejuProject.member.command.Logout;
@@ -75,7 +82,13 @@ public class FrontController extends HttpServlet {
 		map.put("/reviewUpdate.do", new ReviewUpdate()); // 글수정
 		map.put("/reviewDelete.do", new ReviewDelete()); // 글삭제
 		// info
-		
+		map.put("/infoList.do", new InfoList()); // 정보게시판 글목록
+		map.put("/infoSelect.do", new InfoSelect()); // 글조회
+		map.put("/infoInsertForm.do", new InfoInsertForm()); // 글작성 폼
+		map.put("/infoInsert.do", new InfoInsert()); // 글작성
+		map.put("/infoUpdateForm.do", new InfoUpdateForm()); // 글수정 폼
+		map.put("/infoUpdate.do", new InfoUpdate()); // 글수정
+		map.put("/infoDelete.do", new InfoDelete()); // 글삭제		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
