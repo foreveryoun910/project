@@ -36,6 +36,9 @@ import co.jeju.jejuProject.member.command.MemberList;
 import co.jeju.jejuProject.member.command.MemberSelect;
 import co.jeju.jejuProject.member.command.MemberUpdate;
 import co.jeju.jejuProject.member.command.MemberUpdateForm;
+import co.jeju.jejuProject.review.command.ReviewCommentDelete;
+import co.jeju.jejuProject.review.command.ReviewCommentInsert;
+import co.jeju.jejuProject.review.command.ReviewCommentUpdate;
 import co.jeju.jejuProject.review.command.ReviewDelete;
 import co.jeju.jejuProject.review.command.ReviewInsert;
 import co.jeju.jejuProject.review.command.ReviewInsertForm;
@@ -90,9 +93,9 @@ public class FrontController extends HttpServlet {
 		map.put("/infoUpdate.do", new InfoUpdate()); // 글수정
 		map.put("/infoDelete.do", new InfoDelete()); // 글삭제	
 		// review comment
-//		map.put("/reviewCommentInsert.do", new ReviewCommentInsert()); // 댓글작성
+		map.put("/reviewCommentInsert.do", new ReviewCommentInsert()); // 댓글작성
 //		map.put("/reviewCommentUpdate.do", new ReviewCommentUpdate()); // 댓글수정
-//		map.put("/reviewCommentDelete.do", new ReviewCommentDelete()); // 댓글삭제
+		map.put("/reviewCommentDelete.do", new ReviewCommentDelete()); // 댓글삭제
 		// info comment
 		
 	}

@@ -14,7 +14,7 @@
 				<table border="1" style="border-collapse: collapse;">
 					<tr>
 						<th width="100">작성자</th>
-						<td width="100"><input type="text" id="rWriter" name="rWriter" size="35" required="required"></td>
+						<td width="100"><input type="text" id="rWriter" name="rWriter" value ="${sessionScope.id}" size="35" readonly="readonly"></td>
 						<th width="100">작성일자</th>
 						<td width="100"><input type="date" id="rDate" name="rDate" size="30"></td>
 					</tr>

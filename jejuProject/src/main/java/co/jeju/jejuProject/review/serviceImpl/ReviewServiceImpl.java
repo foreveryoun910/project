@@ -51,14 +51,13 @@ public class ReviewServiceImpl implements ReviewService {
 //		String sql = "select * from review where rno = ?";
 		List<ReviewVO> list = new ArrayList<ReviewVO>();
 		ReviewVO vo;
-		boolean b = false;
-		String sql = "select a.*, b.rcname, b.rccontent, b.rcdate from review a left outer join review_comment b on (a.rno = b.rno) where a.rno = ?";
+		String sql = "select a.*, b.rcno, b.rcname, b.rccontent, b.rcdate from review a left outer join review_comment b on (a.rno = b.rno) where a.rno = ?";
 		conn = dataSource.getConnection();		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				vo = new ReviewVO();
 				vo.setrNo(rs.getInt("rno"));
 				vo.setrTitle(rs.getString("rtitle"));
@@ -67,13 +66,13 @@ public class ReviewServiceImpl implements ReviewService {
 				vo.setrDate(rs.getDate("rdate"));
 				vo.setrHit(rs.getInt("rhit"));
 				vo.setrAno(rs.getInt("rano"));
+				vo.setRcNo(rs.getInt("rcno"));
 				vo.setRcName(rs.getString("rcname"));
 				vo.setRcContent(rs.getString("rccontent"));
 				vo.setRcDate(rs.getDate("rcdate"));
-				list.add(vo);
-				
-				hitUpdate(vo.getrNo()); // 조회수 증가 메소드				
+				list.add(vo);				
 			}
+			hitUpdate(no); // 조회수 증가 메소드				
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
@@ -160,7 +159,7 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int reviewCommentInsert(ReviewCommentVO vo) {
 		// TODO 댓글작성
-		String sql = "insert into review_comment values(?, rc_seq.nextval, ?, ?, ?)";
+		String sql = "insert into review_comment(rno, rcno, rccontent, rcname, rcdate) values(?, rc_seq.nextval, ?, ?, sysdate)";
 		int n = 0;
 		conn = dataSource.getConnection();
 		try {
@@ -168,14 +167,28 @@ public class ReviewServiceImpl implements ReviewService {
 			psmt.setInt(1, vo.getrNo());
 			psmt.setString(2, vo.getRcContent());
 			psmt.setString(3, vo.getRcName());
-			psmt.setDate(4, vo.getRcDate());
 			n = psmt.executeUpdate();
+			
+			anoUpdate(vo.getrNo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
 		return n;
 	}
 
+	
+	private void anoUpdate(int no) {
+		// TODO 댓글수 카운트
+		String sql = "update review set rano = rano + 1 where rno = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public int reviewCommentUpdate(ReviewCommentVO vo) {
 		// TODO 댓글수정

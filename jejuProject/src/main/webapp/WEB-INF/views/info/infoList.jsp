@@ -30,7 +30,7 @@
 					<tr onmouseover="this.style.background='yellow'" onmouseout="this.style.background='white'" onclick="getRecord(${info.iNo})">
 						<td align="center">${info.iSubject}</td>
 						<td align="center">${info.iNo}</td>
-						<td>${info.iTitle}</td>
+						<td>${info.iTitle} <span><font color="lightgray">[${info.iAno}]</font></span></td>
 						<td align="center">${info.iWriter}</td>
 						<td align="center">${info.iDate}</td>
 						<td align="center">${info.iHit}</td>							

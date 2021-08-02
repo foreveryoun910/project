@@ -11,19 +11,29 @@ import co.jeju.jejuProject.review.service.ReviewService;
 import co.jeju.jejuProject.review.serviceImpl.ReviewServiceImpl;
 import co.jeju.jejuProject.review.vo.ReviewVO;
 
-public class ReviewUpdateForm implements Command {
+public class ReviewCommentInsert implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 글작성 폼
+		// TODO 댓글작성
 		ReviewService dao = new ReviewServiceImpl();
+		ReviewVO vo = new ReviewVO();
+		vo.setrNo(Integer.valueOf(request.getParameter("rNo")));
+		vo.setRcContent(request.getParameter("rcContent"));
+		vo.setRcName(request.getParameter("rcName"));
+		int n = dao.reviewCommentInsert(vo);
 		List<ReviewVO> list = new ArrayList<ReviewVO>();
-		int n = Integer.valueOf(request.getParameter("rNo"));
-//		System.out.println(n);
-		list = dao.reviewSelect(n);
+		list = dao.reviewSelect(vo.getrNo());
+		System.out.println(list);
 		request.setAttribute("list", list);
 		
-		return "review/reviewUpdateForm";	
+		String page = "";
+		if(n != 0) {
+			page = "review/reviewSelect";
+		} else {
+			page = "review/reviewMessage";
+		}
+		return page;
 	}
 
 }

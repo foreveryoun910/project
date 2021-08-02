@@ -20,7 +20,7 @@ public class InfoUpdateForm implements Command {
 		List<InfoVO> list = new ArrayList<InfoVO>();
 		int n = Integer.valueOf(request.getParameter("iNo"));
 		list = dao.infoSelect(n);
-		request.setAttribute("info", list);
+		request.setAttribute("list", list);
 		
 		return "info/infoUpdateForm";
 	}
