@@ -28,7 +28,7 @@
 				<c:forEach var="review" items="${list}">
 					<tr onmouseover="this.style.background='yellow'" onmouseout="this.style.background='white'" onclick="getRecord(${review.rNo})">
 						<td align="center">${review.rNo}</td>
-						<td>${review.rTitle}</td>
+						<td>${review.rTitle} <span><font color="lightgray">[${review.rAno}]</font></span></td>
 						<td align="center">${review.rWriter}</td>
 						<td align="center">${review.rDate}</td>
 						<td align="center">${review.rHit}</td>							
@@ -42,7 +42,7 @@
 		</div>
 		
 		<form id="frm" name="frm" action="reviewSelect.do" method="post">
-			<input type="hidden" id="rNo" name="rNo">	
+			<input type="hidden" id="rNo" name="rNo">
 		</form>
 	</div>
 </body>

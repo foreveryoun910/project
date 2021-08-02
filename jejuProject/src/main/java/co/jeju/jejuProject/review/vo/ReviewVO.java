@@ -2,13 +2,14 @@ package co.jeju.jejuProject.review.vo;
 
 import java.sql.Date;
 
-public class ReviewVO {
+public class ReviewVO extends ReviewCommentVO {
 	private int rNo;
 	private String rTitle;
 	private String rContent;
 	private String rWriter;
 	private Date rDate;
 	private int rHit;
+	private int rAno;
 	
 	
 	public ReviewVO() {
@@ -62,6 +63,14 @@ public class ReviewVO {
 
 	public void setrHit(int rHit) {
 		this.rHit = rHit;
+	}
+
+	public int getrAno() {
+		return rAno;
+	}
+
+	public void setrAno(int rAno) {
+		this.rAno = rAno;
 	}
 	
 }

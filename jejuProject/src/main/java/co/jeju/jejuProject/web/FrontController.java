@@ -75,7 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardDelete.do", new BoardDelete()); // 공지 삭제
 		// review
 		map.put("/reviewList.do", new ReviewList()); // 후기게시판 글목록
-		map.put("/reviewSelect.do", new ReviewSelect()); // 글조회
+		map.put("/reviewSelect.do", new ReviewSelect()); // 글조회 , 댓글도 여기서 불러옴
 		map.put("/reviewInsertForm.do", new ReviewInsertForm()); // 글작성 폼
 		map.put("/reviewInsert.do", new ReviewInsert()); // 글작성
 		map.put("/reviewUpdateForm.do", new ReviewUpdateForm()); // 글수정 폼
@@ -88,7 +88,13 @@ public class FrontController extends HttpServlet {
 		map.put("/infoInsert.do", new InfoInsert()); // 글작성
 		map.put("/infoUpdateForm.do", new InfoUpdateForm()); // 글수정 폼
 		map.put("/infoUpdate.do", new InfoUpdate()); // 글수정
-		map.put("/infoDelete.do", new InfoDelete()); // 글삭제		
+		map.put("/infoDelete.do", new InfoDelete()); // 글삭제	
+		// review comment
+//		map.put("/reviewCommentInsert.do", new ReviewCommentInsert()); // 댓글작성
+//		map.put("/reviewCommentUpdate.do", new ReviewCommentUpdate()); // 댓글수정
+//		map.put("/reviewCommentDelete.do", new ReviewCommentDelete()); // 댓글삭제
+		// info comment
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

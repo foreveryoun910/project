@@ -9,8 +9,8 @@ import java.util.List;
 
 import co.jeju.jejuProject.dao.DataSource;
 import co.jeju.jejuProject.info.service.InfoService;
+import co.jeju.jejuProject.info.vo.InfoCommentVO;
 import co.jeju.jejuProject.info.vo.InfoVO;
-import co.jeju.jejuProject.review.vo.ReviewVO;
 
 public class InfoServiceImpl implements InfoService {
 	private DataSource dataSource = DataSource.getInstance();
@@ -37,6 +37,7 @@ public class InfoServiceImpl implements InfoService {
 				vo.setiWriter(rs.getString("iwriter"));
 				vo.setiDate(rs.getDate("idate"));
 				vo.setiHit(rs.getInt("ihit"));
+				vo.setiAno(rs.getInt("iano"));
 				list.add(vo);					
 			}
 		} catch (SQLException e) {
@@ -46,15 +47,19 @@ public class InfoServiceImpl implements InfoService {
 	}
 
 	@Override
-	public InfoVO infoSelect(InfoVO vo) {
-		// TODO 글조회
-		String sql = "select * from info where ino = ?";
+	public List<InfoVO> infoSelect(int no) {
+		// TODO 글조회 ( 댓글까지 조회되도록 수정------------------)
+		List<InfoVO> list = new ArrayList<InfoVO>();
+		InfoVO vo;
+		boolean b = false;
+		String sql = "select a.*, b.icname, b.iccontent, b.icdate from info a left outer join info_comment b on (a.ino = b.ino) where a.ino = ?";
 		conn = dataSource.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getiNo());
+			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo = new InfoVO();
 				vo.setiNo(rs.getInt("ino"));
 				vo.setiSubject(rs.getString("isubject"));
 				vo.setiTitle(rs.getString("ititle"));
@@ -62,13 +67,18 @@ public class InfoServiceImpl implements InfoService {
 				vo.setiWriter(rs.getString("iwriter"));
 				vo.setiDate(rs.getDate("idate"));
 				vo.setiHit(rs.getInt("ihit"));
+				vo.setiAno(rs.getInt("iano"));
+				vo.setIcName(rs.getString("icname"));
+				vo.setIcContent(rs.getString("iccontent"));
+				vo.setIcDate(rs.getDate("icdate"));
+				list.add(vo);
 				
 				hitUpdate(vo.getiNo()); // 조회수 증가 메소드
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
-		return vo;
+		return list;
 	}
 
 	private void hitUpdate(int no) {
@@ -147,5 +157,58 @@ public class InfoServiceImpl implements InfoService {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	
+	@Override
+	public int infoCommentInsert(InfoCommentVO vo) {
+		// TODO 댓글작성
+		String sql = "insert into info_comment values(?, ic_seq.nextval, ?, ?, ?)";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getiNo());
+			psmt.setString(2, vo.getIcContent());
+			psmt.setString(3, vo.getIcName());
+			psmt.setDate(4, vo.getIcDate());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;
+	}
+
+	@Override
+	public int infoCommentUpdate(InfoCommentVO vo) {
+		// TODO 댓글수정
+		String sql = "update info_comment set iccontent = ? where icno = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getIcContent());
+			psmt.setInt(2, vo.getIcNo());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;
+	}
+
+	@Override
+	public int infoCommentDelete(InfoCommentVO vo) {
+		// TODO 댓글삭제
+		String sql = "delete from info_comment where icno = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getIcNo());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;
 	}	
 }

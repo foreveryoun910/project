@@ -1,4 +1,4 @@
-package co.jeju.jejuProject.review.comment.vo;
+package co.jeju.jejuProject.review.vo;
 
 import java.sql.Date;
 

@@ -2,7 +2,7 @@ package co.jeju.jejuProject.info.vo;
 
 import java.sql.Date;
 
-public class InfoVO {
+public class InfoVO extends InfoCommentVO {
 	private int iNo;
 	private String iSubject;
 	private String iTitle;
@@ -10,6 +10,7 @@ public class InfoVO {
 	private String iWriter;
 	private Date iDate;
 	private int iHit;
+	private int iAno;
 	
 	
 	public InfoVO() {
@@ -71,6 +72,14 @@ public class InfoVO {
 
 	public void setiHit(int iHit) {
 		this.iHit = iHit;
+	}
+
+	public int getiAno() {
+		return iAno;
+	}
+
+	public void setiAno(int rAno) {
+		this.iAno = rAno;
 	}
 	
 }

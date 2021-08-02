@@ -1,5 +1,8 @@
 package co.jeju.jejuProject.info.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,10 +17,10 @@ public class InfoUpdateForm implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 글수정 폼
 		InfoService dao = new InfoServiceImpl();
-		InfoVO vo = new InfoVO();
-		vo.setiNo(Integer.valueOf(request.getParameter("iNo")));
-		vo = dao.infoSelect(vo);
-		request.setAttribute("info", vo);
+		List<InfoVO> list = new ArrayList<InfoVO>();
+		int n = Integer.valueOf(request.getParameter("iNo"));
+		list = dao.infoSelect(n);
+		request.setAttribute("info", list);
 		
 		return "info/infoUpdateForm";
 	}

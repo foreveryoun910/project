@@ -1,5 +1,8 @@
 package co.jeju.jejuProject.review.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,10 +17,10 @@ public class ReviewSelect implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 글조회
 		ReviewService dao = new ReviewServiceImpl();
-		ReviewVO vo = new ReviewVO();
-		vo.setrNo(Integer.valueOf(request.getParameter("rNo")));
-		vo = dao.reviewSelect(vo);
-		request.setAttribute("review", vo);
+		List<ReviewVO> list = new ArrayList<ReviewVO>();
+		int n = Integer.valueOf(request.getParameter("rNo"));
+		list = dao.reviewSelect(n);
+		request.setAttribute("list", list);
 		
 		return "review/reviewSelect";
 	}

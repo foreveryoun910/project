@@ -85,14 +85,14 @@
 <section id="top">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-7">
+			<div class="col-lg-7 col-md-7 col-7">
 				<p class="contact-action">
 					IN CASE OF ANY QUESTIONS, CALL
 					THIS NUMBER: <strong>053-421-2460</strong>
 				</p>
 			</div>
 			
-			<div class="col-lg-3 clearfix">
+			<div class="col-lg-3 col-md-3 col-3 clearfix">
 				<ul class="login-cart">
 				<c:if test = "${ empty nickname }">
 					<li><a data-toggle="modal" data-target="#myModal" href="#">LOGIN</a></li>
@@ -108,7 +108,7 @@
 				</ul>
 			</div>
 			
-			<div class="col-lg-2">
+			<div class="col-lg-2 col-md-2 col-2">
 				<div class="search-box">
 					<div class="input-group">
 						<input placeholder="Search Here" type="text" class="form-control">
