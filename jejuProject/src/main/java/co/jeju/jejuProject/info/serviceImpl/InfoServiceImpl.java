@@ -52,7 +52,7 @@ public class InfoServiceImpl implements InfoService {
 		List<InfoVO> list = new ArrayList<InfoVO>();
 		InfoVO vo;
 		boolean b = false;
-		String sql = "select a.*, b.icname, b.iccontent, b.icdate from info a left outer join info_comment b on (a.ino = b.ino) where a.ino = ?";
+		String sql = "select a.*, b.icno, b.icname, b.iccontent, b.icdate from info a left outer join info_comment b on (a.ino = b.ino) where a.ino = ?";
 		conn = dataSource.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -68,13 +68,13 @@ public class InfoServiceImpl implements InfoService {
 				vo.setiDate(rs.getDate("idate"));
 				vo.setiHit(rs.getInt("ihit"));
 				vo.setiAno(rs.getInt("iano"));
+				vo.setIcNo(rs.getInt("icno"));
 				vo.setIcName(rs.getString("icname"));
 				vo.setIcContent(rs.getString("iccontent"));
 				vo.setIcDate(rs.getDate("icdate"));
 				list.add(vo);
-				
-				hitUpdate(vo.getiNo()); // 조회수 증가 메소드
 			}
+			hitUpdate(no); // 조회수 증가 메소드
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
@@ -163,7 +163,7 @@ public class InfoServiceImpl implements InfoService {
 	@Override
 	public int infoCommentInsert(InfoCommentVO vo) {
 		// TODO 댓글작성
-		String sql = "insert into info_comment values(?, ic_seq.nextval, ?, ?, ?)";
+		String sql = "insert into info_comment(ino, icno, iccontent, icname, icdate) values(?, ic_seq.nextval, ?, ?, sysdate)";
 		int n = 0;
 		conn = dataSource.getConnection();
 		try {
@@ -171,14 +171,26 @@ public class InfoServiceImpl implements InfoService {
 			psmt.setInt(1, vo.getiNo());
 			psmt.setString(2, vo.getIcContent());
 			psmt.setString(3, vo.getIcName());
-			psmt.setDate(4, vo.getIcDate());
 			n = psmt.executeUpdate();
+			anoUpdate(vo.getiNo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
 		return n;
 	}
 
+	private void anoUpdate(int no) {
+		// TODO 댓글수 카운트
+		String sql = "update info set iano = iano + 1 where ino = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+	
 	@Override
 	public int infoCommentUpdate(InfoCommentVO vo) {
 		// TODO 댓글수정

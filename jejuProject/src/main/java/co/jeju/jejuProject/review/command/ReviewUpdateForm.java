@@ -15,7 +15,7 @@ public class ReviewUpdateForm implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 글작성 폼
+		// TODO 글수정 폼
 		ReviewService dao = new ReviewServiceImpl();
 		List<ReviewVO> list = new ArrayList<ReviewVO>();
 		int n = Integer.valueOf(request.getParameter("rNo"));

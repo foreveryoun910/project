@@ -15,7 +15,7 @@ public class ReviewUpdate implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 글작성
+		// TODO 글수정
 		ReviewService dao = new ReviewServiceImpl();
 		ReviewVO vo = new ReviewVO();
 		vo.setrNo(Integer.valueOf(request.getParameter("rNo")));

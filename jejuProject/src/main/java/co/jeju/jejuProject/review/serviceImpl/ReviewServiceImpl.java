@@ -168,14 +168,12 @@ public class ReviewServiceImpl implements ReviewService {
 			psmt.setString(2, vo.getRcContent());
 			psmt.setString(3, vo.getRcName());
 			n = psmt.executeUpdate();
-			
 			anoUpdate(vo.getrNo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
 		return n;
 	}
-
 	
 	private void anoUpdate(int no) {
 		// TODO 댓글수 카운트

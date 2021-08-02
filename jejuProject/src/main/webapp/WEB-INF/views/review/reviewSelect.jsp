@@ -130,10 +130,10 @@
 
 									<input type="hidden" id="rNo" name="rNo" value="${list[0].rNo}">
 									<input type="hidden" id="rcName" name="rcName"
-										value="${sessionScope.id}">
+										value="${sessionScope.nickname}">
 									<!-- 닉네임 -->
 									<td width="150">
-										<div>${sessionScope.id}</div>
+										<div>${sessionScope.nickname}</div>
 									</td>
 									<!-- 댓글 작성 -->
 									<td width="530">

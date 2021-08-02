@@ -224,7 +224,7 @@
 				<li class="dropdown"><a href="#"> MY PAGE <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="#" onclick="getRecord('${id}')">My Page</a></li>
+						<li><a href="#" onclick="getRecord('${sessionScope.id}')">My Page</a></li>
 						<c:if test = "${ author eq 'ADMIN' }">
 							<li><a href="memberList.do">Member Management</a></li>
 						</c:if>	

@@ -46,7 +46,7 @@
 													onclick="getRecord(${info.iNo})">
 													<td align="center">${info.iSubject}</td>
 													<td align="center">${info.iNo}</td>
-													<td>${info.iTitle}<span><font color="lightgray">[${info.iAno}]</font></span></td>
+													<td>${info.iTitle}&nbsp;&nbsp;<span><font color="#fc0384">[${info.iAno}]</font></span></td>
 													<td align="center">${info.iWriter}</td>
 													<td align="center">${info.iDate}</td>
 													<td align="center">${info.iHit}</td>
@@ -75,5 +75,12 @@
 		</div>
 		<br>
 		<br>
+		
+	<!-- Page level plugins -->
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/datatables-demo.js"></script>		
 </body>
 </html>
