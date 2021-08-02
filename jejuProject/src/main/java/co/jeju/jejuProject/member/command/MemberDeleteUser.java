@@ -9,7 +9,7 @@ import co.jeju.jejuProject.member.service.MemberService;
 import co.jeju.jejuProject.member.serviceImpl.MemberServiceImpl;
 import co.jeju.jejuProject.member.vo.MemberVO;
 
-public class MemberDelete implements Command {
+public class MemberDeleteUser implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {

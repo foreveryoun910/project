@@ -22,11 +22,14 @@ public class Login implements Command {
 		vo = dao.memberLogin(vo);
 		
 		String page = "";
-		if(vo.getNickname() != null) {
+		if(vo.getId() != null) {
+			session.setAttribute("id", vo.getId());
+			session.setAttribute("name", vo.getName());
 			session.setAttribute("nickname", vo.getNickname());
+			session.setAttribute("email", vo.getEmail());
 			session.setAttribute("author", vo.getAuthor());
-			session.setAttribute("id", vo.getId());		
-			request.setAttribute("message", session.getAttribute("nickname") + "님 로그인 성공");
+			session.setAttribute("state", vo.getState());
+			request.setAttribute("message", session.getAttribute("nickname") + "님 환영합니다!");
 			page = "home/home";
 			
 		} else {

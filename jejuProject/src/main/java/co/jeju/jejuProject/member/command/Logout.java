@@ -12,12 +12,11 @@ public class Logout implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 로그아웃
 		HttpSession session = request.getSession();
-		String message = session.getAttribute("nickname") + "님 정상 로그아웃";
-		session.removeAttribute("nickname");
-		session.removeAttribute("author");
-		request.setAttribute("message", message);
+//		String message = session.getAttribute("nickname") + "님 정상 로그아웃";
+		session.invalidate();
+//		request.setAttribute("logoutmessage", message);
 		
-		return "member/memberMessage";
+		return "home/home";
 	}
 
 }

@@ -8,10 +8,9 @@
 </head>
 <body>
 	<div align="center">
-		${message}
 		<div>
-			<button type="button" onclick="location.href='home.do'">홈으로</button>
+			<button type="button" class="btn btn-success" onclick="location.href='home.do'">HOME</button>
 		</div>
-	</div>
+	</div><br><br>
 </body>
 </html>

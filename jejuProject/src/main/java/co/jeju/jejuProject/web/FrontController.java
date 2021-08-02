@@ -29,7 +29,8 @@ import co.jeju.jejuProject.info.command.InfoUpdateForm;
 import co.jeju.jejuProject.member.command.Login;
 import co.jeju.jejuProject.member.command.LoginForm;
 import co.jeju.jejuProject.member.command.Logout;
-import co.jeju.jejuProject.member.command.MemberDelete;
+import co.jeju.jejuProject.member.command.MemberDeleteAdmin;
+import co.jeju.jejuProject.member.command.MemberDeleteUser;
 import co.jeju.jejuProject.member.command.MemberInsert;
 import co.jeju.jejuProject.member.command.MemberInsertForm;
 import co.jeju.jejuProject.member.command.MemberList;
@@ -38,7 +39,6 @@ import co.jeju.jejuProject.member.command.MemberUpdate;
 import co.jeju.jejuProject.member.command.MemberUpdateForm;
 import co.jeju.jejuProject.review.command.ReviewCommentDelete;
 import co.jeju.jejuProject.review.command.ReviewCommentInsert;
-import co.jeju.jejuProject.review.command.ReviewCommentUpdate;
 import co.jeju.jejuProject.review.command.ReviewDelete;
 import co.jeju.jejuProject.review.command.ReviewInsert;
 import co.jeju.jejuProject.review.command.ReviewInsertForm;
@@ -67,7 +67,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberInsert.do", new MemberInsert()); // 회원가입
 		map.put("/memberUpdateForm.do", new MemberUpdateForm()); // 회원정보변경 폼
 		map.put("/memberUpdate.do", new MemberUpdate()); // 회원정보변경
-		map.put("/memberDelete.do", new MemberDelete()); // 회원탈퇴
+		map.put("/memberDeleteAdmin.do", new MemberDeleteAdmin()); // 회원탈퇴(관리자)
+		map.put("/memberDeleteUser.do", new MemberDeleteUser()); // 회원탈퇴(유저)
 		// board
 		map.put("/boardList.do", new BoardList()); // 전체공지조회
 		map.put("/boardSelect.do", new BoardSelect()); // 공지상세조회

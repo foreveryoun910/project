@@ -54,11 +54,13 @@ public class MemberServiceImpl implements MemberService {
 			psmt.setString(1, vo.getId());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo.setNo(rs.getInt("no"));
 				vo.setId(rs.getString("id"));
 				vo.setPassword(rs.getString("password"));
 				vo.setName(rs.getString("name"));
 				vo.setNickname(rs.getString("nickname"));
 				vo.setEmail(rs.getString("email"));
+				vo.setAuthor(rs.getString("author"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,7 +71,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO memberLogin(MemberVO vo) {
 		// TODO 로그인(회원)
-		String sql = "select nickname, author from member where id = ? and password = ? and state = 'Y'";
+		String sql = "select * from member where id = ? and password = ? and state = 'Y'";
 		conn = dataSource.getConnection();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -77,7 +79,12 @@ public class MemberServiceImpl implements MemberService {
 			psmt.setString(2, vo.getPassword());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo.setNo(rs.getInt("no"));
+				vo.setId(rs.getString("id"));
+				vo.setPassword(rs.getString("password"));
+				vo.setName(rs.getString("name"));
 				vo.setNickname(rs.getString("nickname"));
+				vo.setEmail(rs.getString("email"));
 				vo.setAuthor(rs.getString("author"));
 			}
 		} catch (SQLException e) {

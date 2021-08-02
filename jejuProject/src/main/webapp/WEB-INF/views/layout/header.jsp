@@ -94,11 +94,11 @@
 			
 			<div class="col-lg-3 col-md-3 col-3 clearfix">
 				<ul class="login-cart">
-				<c:if test = "${ empty nickname }">
+				<c:if test = "${ empty id }">
 					<li><a data-toggle="modal" data-target="#myModal" href="#">LOGIN</a></li>
 					<li><a href="memberInsertForm.do">SIGN UP</a></li>
 				</c:if>	
-				<c:if test = "${ not empty nickname }">
+				<c:if test = "${ not empty id }">
 					<li>
 						<div>
 							<a href="logout.do">LOGOUT</a>
@@ -219,7 +219,7 @@
 				<li><a href="boardList.do">NOTICE</a></li>
 				<li><a href="reviewList.do">TRAVEL REVIEW</a></li>
 				<li><a href="infoList.do">INFORMATION BOARD</a></li>
-				<c:if test = "${ not empty nickname }">
+				<c:if test = "${ not empty id }">
 				
 				<li class="dropdown"><a href="#"> MY PAGE <span class="caret"></span>
 				</a>
