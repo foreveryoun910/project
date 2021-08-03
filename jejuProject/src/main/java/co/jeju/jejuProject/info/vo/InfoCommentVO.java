@@ -8,6 +8,7 @@ public class InfoCommentVO {
 	private String icContent;
 	private String icName;
 	private Date icDate;
+	private String iRecId;
 	
 	
 	public InfoCommentVO() {
@@ -53,6 +54,14 @@ public class InfoCommentVO {
 
 	public void setIcDate(Date icDate) {
 		this.icDate = icDate;
+	}
+
+	public String getiRecId() {
+		return iRecId;
+	}
+
+	public void setiRecId(String iRecId) {
+		this.iRecId = iRecId;
 	}
 	
 }

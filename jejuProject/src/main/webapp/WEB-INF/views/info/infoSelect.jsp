@@ -46,6 +46,9 @@
 			</table>
 		<div>
 			<button type="button" class="btn btn-success" onclick="location.href='infoList.do'">목록</button>
+				&nbsp;&nbsp;&nbsp;
+				<button type="submit" class="btn btn-success"
+					onclick="location.href='infoRecOn.do?iNo=${list[0].iNo}'">추천</button>
 			<c:choose>
 			<c:when test="${list[0].iWriter == sessionScope.nickname}">			
 				&nbsp;&nbsp;&nbsp;
@@ -60,47 +63,52 @@
 			</c:choose>	
 		</div><br>
 		
-		<!-- 댓글 보여주는 곳 -->
-<div class="card shadow mb-4">
-	<div class="row" style="float: none; margin: 100 auto;">
-<div class="col-lg-11" style="float: none; margin: 100 auto;">
-	<div class="card-body">
-		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable"
-				width="100%" cellspacing="0">
-				<tbody>
-				<!-- 댓글목록 -->
-					<c:if test="${list[0].iAno != 0}">
-						<c:forEach var="info" items="${list}">
-							<tr>
-									<!-- 댓글번호.. -->
-			<input type="hidden" id="icNo" name="icNo" value="${info.icNo}">
-								<!-- 아이디,작성날짜 -->
-								<td width="150" align="center">
-									<div>${info.icName}<br><font size="2" color="lightgray">${info.icDate}</font></div>
-								</td>
-								<!-- 댓글내용 -->
-								<td width="540">
-									<div class="text_wrapper">${info.icContent}</div>
-								</td>
-								<td align="center">
-									<!-- 댓글 작성자만 수정,삭제 가능하도록 -->
-									<c:if test="${list[0].icName == sessionScope.id}">
-										<a href="#">댓글수정</a>
-										<a href="#">댓글삭제</a>
-									</c:if>
-								</td>
-							</tr>
-						</c:forEach>	
-					</c:if>
-					</tbody>
-					</table>
-					</div>
+				<!-- 댓글 보여주는 곳 -->
+		<div class="card shadow mb-4">
+			<div class="row" style="float: none; margin: 100 auto;">
+		<div class="col-lg-10" style="float: none; margin: 100 auto;">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable"
+						width="100%" cellspacing="0">
+						<tbody>
+						<!-- 댓글목록 -->
+							<c:if test="${list[0].iAno != 0}">
+								<c:forEach var="info" items="${list}">
+									<tr>
+											<!-- 댓글번호.. -->
+									<input type="hidden" id="icNo" name="icNo" value="${info.icNo}">
+										<!-- 아이디,작성날짜 -->
+										<td width="150" align="center">
+											<div>${info.icName}<br><font size="2" color="lightgray">${info.icDate}</font></div>
+										</td>
+										<!-- 댓글내용 -->
+										<td width="540">
+											<div class="text_wrapper">${info.icContent}</div>
+										</td>
+										<td align="center">
+										<!-- 댓글 작성자만 수정,삭제 가능하도록 //////////// 나중에.. --> <!-- <a href="infoCommentUpdate.do">[수정]</a> -->
+											<c:if test="${info.icName == sessionScope.nickname}">
+												<button type="submit" class="btn btn-danger" 
+													onclick="location.href='infoCommentDelete.do?icNo=${info.icNo}'">댓글삭제</button>
+											</c:if>
+											<c:if test="${info.icName != sessionScope.nickname}">
+												<button type="button" class="btn btn-secondary" 
+													onclick="">남의댓글</button>
+											
+											</c:if>
+										</td>
+									</tr>
+								</c:forEach>	
+							</c:if>
+							</tbody>
+							</table>
+							</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- 댓글 보여주는 곳 -->
+				<!-- 댓글 보여주는 곳 -->
 					</div>
 				</div>
 			</div>
@@ -126,13 +134,26 @@
 							</td>
 							<!-- 댓글 작성 -->
 							<td width="530">
-								<div><textarea ic="icContent" name="icContent" rows="4" cols="70"></textarea></div>
+								<div><textarea id="icContent" name="icContent" rows="4" cols="70"></textarea></div>
 							</td>
 							<!-- 댓글 등록 버튼 -->
 							<td width="100" align="center">
 								<div id="btn" style="text-align:center;">
-									<p><button type="submit" class="btn btn-success">댓글등록</button></a></p>
+									<p><button type="submit" class="btn btn-success">댓글등록</button></p>
 								</div>
+										<div>
+											<input type="hidden" id="iNo" name="iNo"
+												value="${list[0].iNo}"> <input type="hidden"
+												id="iWriter" name="iWriter" value="${list[0].iWriter}">
+											<input type="hidden" id="iDate" name="iDate"
+												value="${list[0].iDate}"> <input type="hidden"
+												id="iHit" name="iHit" value="${list[0].iHit}"> <input
+												type="hidden" id="iTitle" name="iTitle"
+												value="${list[0].iTitle}"> <input type="hidden"
+												id="iContent" name="iContent" value="${list[0].iContent}">
+											<input type="hidden" id="icDate" name="icDate"
+												value="${list[0].icDate}">
+										</div>								
 							</td>
 					</tr>
 				</c:if>

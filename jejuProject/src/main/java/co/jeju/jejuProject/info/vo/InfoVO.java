@@ -11,6 +11,7 @@ public class InfoVO extends InfoCommentVO {
 	private Date iDate;
 	private int iHit;
 	private int iAno;
+	private int iLike;
 	
 	
 	public InfoVO() {
@@ -80,6 +81,14 @@ public class InfoVO extends InfoCommentVO {
 
 	public void setiAno(int rAno) {
 		this.iAno = rAno;
+	}
+
+	public int getiLike() {
+		return iLike;
+	}
+
+	public void setiLike(int iLike) {
+		this.iLike = iLike;
 	}
 	
 }

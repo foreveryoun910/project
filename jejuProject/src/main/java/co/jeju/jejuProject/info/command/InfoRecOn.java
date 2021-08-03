@@ -5,27 +5,26 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.jeju.jejuProject.common.Command;
 import co.jeju.jejuProject.info.service.InfoService;
 import co.jeju.jejuProject.info.serviceImpl.InfoServiceImpl;
 import co.jeju.jejuProject.info.vo.InfoVO;
 
-public class InfoCommentInsert implements Command {
+public class InfoRecOn implements Command {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 댓글작성
+		// TODO 추천on
 		InfoService dao = new InfoServiceImpl();
+		HttpSession session = request.getSession();
 		InfoVO vo = new InfoVO();
 		vo.setiNo(Integer.valueOf(request.getParameter("iNo")));
-		vo.setIcContent(request.getParameter("icContent"));
-		vo.setIcName(request.getParameter("icName"));
-		int n = dao.infoCommentInsert(vo);
 		List<InfoVO> list = new ArrayList<InfoVO>();
-		list = dao.infoSelect(vo.getiNo());
-		request.setAttribute("list", list);
-//		System.out.println(list);
+		int n = dao.infoUpdate(vo);
+		list = dao.infoSelectList();
+		session.setAttribute("list", list);	
 		
 		String page = "";
 		if(n != 0) {

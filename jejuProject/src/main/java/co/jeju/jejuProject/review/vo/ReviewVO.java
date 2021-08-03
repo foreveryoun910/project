@@ -10,6 +10,7 @@ public class ReviewVO extends ReviewCommentVO {
 	private Date rDate;
 	private int rHit;
 	private int rAno;
+	private int rLike;
 	
 	
 	public ReviewVO() {
@@ -71,6 +72,14 @@ public class ReviewVO extends ReviewCommentVO {
 
 	public void setrAno(int rAno) {
 		this.rAno = rAno;
+	}
+
+	public int getrLike() {
+		return rLike;
+	}
+
+	public void setrLike(int rLike) {
+		this.rLike = rLike;
 	}
 	
 }

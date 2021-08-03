@@ -35,6 +35,7 @@
 												<th width="90">작성자</th>
 												<th width="90">작성일자</th>
 												<th width="90">조회수</th>
+												<th width="60">추천</th>
 											</tr>
 										</thead>
 
@@ -49,6 +50,7 @@
 													<td align="center">${review.rWriter}</td>
 													<td align="center">${review.rDate}</td>
 													<td align="center">${review.rHit}</td>
+													<td align="center">${review.rLike}</td>
 												</tr>
 											</c:forEach>
 									</table>

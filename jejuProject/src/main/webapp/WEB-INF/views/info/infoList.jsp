@@ -36,6 +36,7 @@
 												<th width="90">작성자</th>
 												<th width="90">작성일자</th>
 												<th width="90">조회수</th>
+												<th width="60">추천</th>
 											</tr>
 										</thead>
 
@@ -50,6 +51,7 @@
 													<td align="center">${info.iWriter}</td>
 													<td align="center">${info.iDate}</td>
 													<td align="center">${info.iHit}</td>
+													<td align="center">${info.iLike}</td>
 												</tr>
 											</c:forEach>
 									</table>
@@ -72,6 +74,7 @@
 			<form id="frm" name="frm" action="infoSelect.do" method="post">
 				<input type="hidden" id="iNo" name="iNo">
 			</form>
+		</div>
 		</div>
 		<br>
 		<br>

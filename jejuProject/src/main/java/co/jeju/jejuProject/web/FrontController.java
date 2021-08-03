@@ -24,6 +24,7 @@ import co.jeju.jejuProject.info.command.InfoDelete;
 import co.jeju.jejuProject.info.command.InfoInsert;
 import co.jeju.jejuProject.info.command.InfoInsertForm;
 import co.jeju.jejuProject.info.command.InfoList;
+import co.jeju.jejuProject.info.command.InfoRecOn;
 import co.jeju.jejuProject.info.command.InfoSelect;
 import co.jeju.jejuProject.info.command.InfoUpdate;
 import co.jeju.jejuProject.info.command.InfoUpdateForm;
@@ -44,6 +45,8 @@ import co.jeju.jejuProject.review.command.ReviewDelete;
 import co.jeju.jejuProject.review.command.ReviewInsert;
 import co.jeju.jejuProject.review.command.ReviewInsertForm;
 import co.jeju.jejuProject.review.command.ReviewList;
+import co.jeju.jejuProject.review.command.ReviewRecOff;
+import co.jeju.jejuProject.review.command.ReviewRecOn;
 import co.jeju.jejuProject.review.command.ReviewSelect;
 import co.jeju.jejuProject.review.command.ReviewUpdate;
 import co.jeju.jejuProject.review.command.ReviewUpdateForm;
@@ -98,11 +101,15 @@ public class FrontController extends HttpServlet {
 		// review comment
 		map.put("/reviewCommentInsert.do", new ReviewCommentInsert()); // 댓글작성
 //		map.put("/reviewCommentUpdate.do", new ReviewCommentUpdate()); // 댓글수정
-//		map.put("/reviewCommentDelete.do", new ReviewCommentDelete()); // 댓글삭제
+		map.put("/reviewCommentDelete.do", new ReviewCommentDelete()); // 댓글삭제
+		map.put("/reviewRecOn.do", new ReviewRecOn()); // 추천on
+		map.put("/reviewRecOff.do", new ReviewRecOff()); // 추천off
 		// info comment
 		map.put("/infoCommentInsert.do", new InfoCommentInsert()); // 댓글작성
 //		map.put("/infoCommentUpdate.do", new InfoCommentUpdate()); // 댓글수정
-//		map.put("/infoCommentDelete.do", new InfoCommentDelete()); // 댓글삭제		
+//		map.put("/infoCommentDelete.do", new InfoCommentDelete()); // 댓글삭제
+		map.put("/infoRecOn.do", new InfoRecOn()); // 추천on
+//		map.put("/infoRecOff.do", new InfoRecOff()); // 추천off
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

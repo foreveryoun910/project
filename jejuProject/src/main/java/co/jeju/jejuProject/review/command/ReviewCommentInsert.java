@@ -24,7 +24,7 @@ public class ReviewCommentInsert implements Command {
 		int n = dao.reviewCommentInsert(vo);
 		List<ReviewVO> list = new ArrayList<ReviewVO>();
 		list = dao.reviewSelect(vo.getrNo());
-		System.out.println(list);
+//		System.out.println(list);
 		request.setAttribute("list", list);
 		
 		String page = "";

@@ -8,6 +8,7 @@ public class ReviewCommentVO {
 	private String rcContent;
 	private String rcName;
 	private Date rcDate;
+	private String rRecId;
 	
 	
 	public ReviewCommentVO() {
@@ -53,6 +54,14 @@ public class ReviewCommentVO {
 
 	public void setRcDate(Date rcDate) {
 		this.rcDate = rcDate;
+	}
+
+	public String getrRecId() {
+		return rRecId;
+	}
+
+	public void setrRecId(String rRecId) {
+		this.rRecId = rRecId;
 	}
 
 }

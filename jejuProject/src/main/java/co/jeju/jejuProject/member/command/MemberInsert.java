@@ -25,7 +25,7 @@ public class MemberInsert implements Command {
 
 		String page;
 		if(n != 0) {
-			request.setAttribute("message", vo.getId() + "님 회원가입을 축하합니다.");
+			request.setAttribute("message", vo.getId() + "님 회원가입 되었습니다.");
 			page = "home/home";
 		} else {
 			request.setAttribute("message", "입력 실패!");

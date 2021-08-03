@@ -38,6 +38,7 @@ public class InfoServiceImpl implements InfoService {
 				vo.setiDate(rs.getDate("idate"));
 				vo.setiHit(rs.getInt("ihit"));
 				vo.setiAno(rs.getInt("iano"));
+				vo.setiLike(rs.getInt("ilike"));
 				list.add(vo);					
 			}
 		} catch (SQLException e) {
@@ -68,6 +69,7 @@ public class InfoServiceImpl implements InfoService {
 				vo.setiDate(rs.getDate("idate"));
 				vo.setiHit(rs.getInt("ihit"));
 				vo.setiAno(rs.getInt("iano"));
+				vo.setiLike(rs.getInt("ilike"));
 				vo.setIcNo(rs.getInt("icno"));
 				vo.setIcName(rs.getString("icname"));
 				vo.setIcContent(rs.getString("iccontent"));
@@ -222,5 +224,64 @@ public class InfoServiceImpl implements InfoService {
 			e.printStackTrace();
 		} finally {close();}
 		return n;
+	}
+
+	@Override
+	public int infoRecOn(InfoCommentVO vo) {
+		// TODO 추천on
+		String sql = "update info_comment set I_REC_ID = 1 where ino = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getiNo());
+			n = psmt.executeUpdate();
+			likePlus(vo.getiNo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;		
+	}
+
+	private void likePlus(int no) {
+		// TODO 좋아요 수 카운트 +
+		String sql = "update info set ilike = ilike + 1 where ino = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}	
+	
+	
+	@Override
+	public int infoRecOff(InfoCommentVO vo) {
+		// TODO 추천off
+		String sql = "update info_comment set I_REC_ID = 0 where ino = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getiNo());
+			n = psmt.executeUpdate();
+			likeMinus(vo.getiNo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;
+	}
+	
+	private void likeMinus(int no) {
+		// TODO 좋아요 수 카운트 -
+		String sql = "update info set ilike = ilike - 1 where ino = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

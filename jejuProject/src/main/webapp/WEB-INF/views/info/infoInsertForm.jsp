@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,9 @@
 														<option value="맛집">맛집</option>
 														<option value="숙소">숙소</option>
 														<option value="렌터카">렌터카</option>
+														<c:if test="${author eq 'ADMIN'}">
+															<option value="공지">공지</option>
+														</c:if>
 												</select></td>
 												<th>작성자</th>
 												<td width="150"><input type="text" id="iWriter"

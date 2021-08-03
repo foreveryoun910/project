@@ -49,7 +49,11 @@
 					<div>
 						<button type="button" class="btn btn-success"
 							onclick="location.href='reviewList.do'">목록</button>
+							&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-success"
+								onclick="location.href='reviewRecOn.do?rNo=${list[0].rNo}'">추천</button>
 						<c:choose>
+						
 						<c:when test="${list[0].rWriter == sessionScope.nickname}">
 							&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-success"
@@ -83,8 +87,7 @@
 																<c:forEach var="review" items="${list}">
 																	<tr>
 																		<!-- 댓글번호.. -->
-																		<input type="hidden" id="rcNo" name="rcNo"
-																			value="${review.rcNo}">
+																		<input type="hidden" id="rcNo" name="rcNo" value="${review.rcNo}">
 																		<!-- 아이디,작성날짜 -->
 																		<td width="150">
 																			<div>${review.rcName}<br> <font size="2"
@@ -97,10 +100,17 @@
 																		</td>
 																		<td align="center">
 																			<!-- 댓글 작성자만 수정,삭제 가능하도록 //////////// 나중에.. --> <!-- <a href="reviewCommentUpdate.do">[수정]</a> -->
-																			<button type="submit" class="btn btn-danger" 
-																				onclick="location.href='reviewCommentDelete.do?rcNo=${review.rcNo}'">댓글삭제</button>
+																			<c:if test="${review.rcName == sessionScope.nickname}">
+																				<button type="submit" class="btn btn-danger" 
+																					onclick="location.href='reviewCommentDelete.do?rcNo=${review.rcNo}'">댓글삭제</button>
 																			<!-- <c:if test="${review.rcName == review.rWriter == sessionScope.id}">
 																				 </c:if> -->
+																			</c:if>
+																			<c:if test="${review.rcName != sessionScope.nickname}">
+																				<button type="button" class="btn btn-secondary" 
+																					onclick="">남의댓글</button>
+																			
+																			</c:if>
 																		</td>
 																	</tr>
 																</c:forEach>
@@ -129,8 +139,7 @@
 								<tr bgcolor="#F5F5F5" align="center">
 
 									<input type="hidden" id="rNo" name="rNo" value="${list[0].rNo}">
-									<input type="hidden" id="rcName" name="rcName"
-										value="${sessionScope.nickname}">
+									<input type="hidden" id="rcName" name="rcName" value="${sessionScope.nickname}">
 									<!-- 닉네임 -->
 									<td width="150">
 										<div>${sessionScope.nickname}</div>

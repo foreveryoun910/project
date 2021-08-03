@@ -15,4 +15,7 @@ public interface ReviewService {
 	int reviewCommentInsert(ReviewCommentVO vo); // 댓글작성
 	int reviewCommentUpdate(ReviewCommentVO vo); // 댓글수정
 	int reviewCommentDelete(ReviewCommentVO vo); // 댓글삭제
+	
+	int reviewRecOn(ReviewCommentVO vo); // 추천on
+	int reviewRecOff(ReviewCommentVO vo); // 추천off
 }

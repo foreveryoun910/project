@@ -58,7 +58,7 @@
 					<div>
 						<button type="button" class="btn btn-success"
 							onclick="location.href='home.do'">HOME</button>
-						<c:if test="${author eq 'ADMIN' }">
+						<c:if test="${author eq 'ADMIN'}">
 						&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-success"
 								onclick="location.href='boardInsertForm.do'">글쓰기</button>

@@ -37,6 +37,7 @@ public class ReviewServiceImpl implements ReviewService {
 				vo.setrDate(rs.getDate("rdate"));
 				vo.setrHit(rs.getInt("rhit"));
 				vo.setrAno(rs.getInt("rano"));
+				vo.setrLike(rs.getInt("rlike"));
 				list.add(vo);					
 			}
 		} catch (SQLException e) {
@@ -66,6 +67,7 @@ public class ReviewServiceImpl implements ReviewService {
 				vo.setrDate(rs.getDate("rdate"));
 				vo.setrHit(rs.getInt("rhit"));
 				vo.setrAno(rs.getInt("rano"));
+				vo.setrLike(rs.getInt("rlike"));
 				vo.setRcNo(rs.getInt("rcno"));
 				vo.setRcName(rs.getString("rcname"));
 				vo.setRcContent(rs.getString("rccontent"));
@@ -214,9 +216,82 @@ public class ReviewServiceImpl implements ReviewService {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, vo.getRcNo());
 			n = psmt.executeUpdate();
+			anoMinus(vo.getRcNo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {close();}
 		return n;
 	}
+
+	private void anoMinus(int no) {
+		// TODO 댓글수 카운트
+		String sql = "update review set rano = rano - 1 where (select rno from review_comment where rcno = ?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	@Override
+	public int reviewRecOn(ReviewCommentVO vo) {
+		// TODO 추천on
+		String sql = "update review_comment set R_REC_ID = 1 where rno = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getrNo());
+			n = psmt.executeUpdate();
+			likePlus(vo.getrNo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;		
+	}
+
+	private void likePlus(int no) {
+		// TODO 좋아요 수 카운트 +
+		String sql = "update review set rlike = rlike + 1 where rno = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}	
+	
+	
+	@Override
+	public int reviewRecOff(ReviewCommentVO vo) {
+		// TODO 추천off
+		String sql = "update review_comment set R_REC_ID = 0 where rno = ?";
+		int n = 0;
+		conn = dataSource.getConnection();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getrNo());
+			n = psmt.executeUpdate();
+			likeMinus(vo.getrNo());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {close();}
+		return n;
+	}
+	
+	private void likeMinus(int no) {
+		// TODO 좋아요 수 카운트 -
+		String sql = "update review set rlike = rlike - 1 where rno = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
