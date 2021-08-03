@@ -225,7 +225,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	private void anoMinus(int no) {
 		// TODO 댓글수 카운트
-		String sql = "update review set rano = rano - 1 where (select rno from review_comment where rcno = ?)";
+		String sql = "update review set rano = rano - 1 where rcno = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, no);

@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>home</title>
+	<title>WELCOME JEJU</title>
 
 	<!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
@@ -31,7 +31,6 @@
 	<script src="<%=request.getContextPath()%>/resource/js/jquery.nicescroll.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/js/jquery.scrollUp.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resource/js/main.js" type="text/javascript"></script>
-
 </head>
 <body>
 	<div class="container-fluid">

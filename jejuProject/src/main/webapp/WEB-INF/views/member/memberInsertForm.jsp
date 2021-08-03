@@ -46,7 +46,7 @@
 											<th width="150">닉네임</th>
 											<td width="400"><input type="text" id="nickname"
 												name="nickname" size="40" placeholder="닉네임 입력"
-												required="required"></td>
+												required="required">&nbsp;&nbsp;<span><font size="2" color="lightgray">닉네임은 6글자까지</font></span></td>
 										</tr>
 										<tr>
 											<th width="150">이메일</th>
